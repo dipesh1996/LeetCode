@@ -1,0 +1,17 @@
+class Solution {
+public:
+    ListNode* middleNode(ListNode* head) {
+        int count = 0;
+        ListNode* iterativeNode = head;
+        while(iterativeNode != nullptr)
+        {
+            ++count;
+            iterativeNode = iterativeNode->next;
+        }
+        iterativeNode = head;
+        count /=2;
+        while(iterativeNode && count--)
+            iterativeNode = iterativeNode->next;
+        return iterativeNode;
+    }
+};
