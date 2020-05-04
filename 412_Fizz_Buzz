@@ -1,0 +1,13 @@
+class Solution {
+    public List<String> fizzBuzz(int n) {
+        List<String> ArrList = new ArrayList<>();
+        for(int i = 1; i<=n;i++)
+        {
+            if(i%3 ==0 && i%5==0) ArrList.add("FizzBuzz");
+            else if(i%3 == 0) ArrList.add("Fizz");
+            else if(i%5 == 0) ArrList.add("Buzz");
+            else ArrList.add(""+i);
+        }
+        return ArrList;
+    }
+}
