@@ -1,0 +1,12 @@
+class Solution {
+    public int[] createTargetArray(int[] nums, int[] index) {
+    List<Integer> ArrList = new ArrayList<Integer>();
+        for(int i = 0; i < nums.length; i++)
+            ArrList.add(index[i], nums[i]);
+        
+        int[] resultArr = new int[nums.length];
+        for(int i = 0; i < ArrList.size(); i++)
+            resultArr[i] = ArrList.get(i); 
+    return resultArr;           
+    }
+}
