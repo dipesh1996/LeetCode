@@ -1,0 +1,20 @@
+class Solution {
+    public int firstUniqChar(String s) {
+        HashMap<Character, Integer> hmap = new HashMap<>();
+        int i =0;
+        int len = s.length();
+        for(i =0; i<len;i++)
+        {
+            if(!hmap.containsKey(s.charAt(i)))
+                hmap.put(s.charAt(i), 1);
+            else
+                hmap.replace(s.charAt(i), hmap.get(s.charAt(i))+1);
+        }
+        for(i = 0;i<len;i++)
+        {
+            if(hmap.get(s.charAt(i))==1)
+                return i;
+        }
+        return -1;
+    }
+}
