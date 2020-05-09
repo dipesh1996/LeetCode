@@ -1,0 +1,19 @@
+class Solution {
+    public boolean checkStraightLine(int[][] coordinates) {
+        if(coordinates.length == 2)
+            return true;
+        else
+        {
+            int slope = 0;
+            if(coordinates[1][0] - coordinates[0][0] == 0)
+                slope = (coordinates[1][1] - coordinates[0][1]);
+            else
+                slope = (coordinates[1][1] - coordinates[0][1])/(coordinates[1][0] - coordinates[0][0]);
+            int c = coordinates[0][1] - (slope)*coordinates[0][0];
+            for(int i=0;i<coordinates.length;i++)
+                if((slope*coordinates[i][0]+c) != coordinates[i][1])
+                    return false;
+        }
+    return true;
+    }
+}
