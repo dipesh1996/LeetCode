@@ -1,0 +1,29 @@
+class Solution {
+    public boolean canConstruct(String ransomNote, String magazine) {
+        HashMap<Character, Integer> hmap = new HashMap<>(); 
+        if(ransomNote.length()>magazine.length()) return false;
+    	if(ransomNote.isEmpty() && magazine.isEmpty()) return true;
+        for(int i=0;i<ransomNote.length();i++)
+        {
+            if(!hmap.containsKey(ransomNote.charAt(i)))
+                hmap.put(ransomNote.charAt(i), 1);
+            else
+                hmap.put(ransomNote.charAt(i), hmap.get(ransomNote.charAt(i)) + 1);
+                
+        }
+        int count = 0;
+        for(int i=0;i<magazine.length();i++)
+        {
+            if(hmap.containsKey(magazine.charAt(i))){
+                count = hmap.get(magazine.charAt(i));
+                if(--count == 0)
+                    hmap.remove(magazine.charAt(i));
+                else
+                    hmap.put(magazine.charAt(i), count);
+            }
+            if(hmap.keySet().size()==0)
+			   return true;
+        }
+        return false;   
+    }
+}
