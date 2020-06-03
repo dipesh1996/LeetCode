@@ -1,0 +1,19 @@
+class Solution {
+    public int twoCitySchedCost(int[][] costs) {
+        // P1 [10, 20] -> 10 - 20 = -10 
+        // P2 [30, 200] -> 30 - 200 = -170 
+        // P3 [400, 50] -> 400 - 50 = 350 
+        // P4 [30, 20] -> 30 - 20 = 10 
+        // Sort based on the cost of diff of sending A to B -> -170, -10, 10, 350 ([[30, 200], [10, 20], [30, 20], [400, 50]])
+        // P2 P1 P4 P3 -> A = P2, P1 -> 30 + 10 = 40 
+        //                B = P4, P3 -> 20 + 50 = 70 
+        // 			      A + B = 40 + 70 = 110
+        Arrays.sort(costs, (p1, p2) -> (p1[0] - p2[0]) - (p1[1] - p2[1]));
+        int minCost = 0;
+        for (int i = 0; i < costs.length / 2; i++) {
+            minCost += costs[i][0]; // send first N to A
+            minCost += costs[costs.length / 2 + i][1]; // send last N to B
+        }
+        return minCost;
+    }
+}
